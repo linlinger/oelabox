@@ -106,6 +106,7 @@
     - name: Install prerequisites for Arch Linux Based Distros
       community.general.pacman:
         name:
+          - git
           - libvirt
           - ruby
           - vagrant
@@ -178,23 +179,22 @@
       become: true
       become_user: "{{ invoking_user }}"
 
-    - name: Install ktdreyer.koji_ansible collection
-      ansible.builtin.shell: "ansible-galaxy collection install /tmp/koji-ansible/_build/ktdreyer-koji_ansible-*.tar.gz"
-      changed_when: "1 != 1"
-      become: true
-      become_user: "{{ invoking_user }}"
-
     - name: Clone ktdreyer.koji_ansible collection
       ansible.builtin.git:
         repo: 'https://github.com/ktdreyer/koji-ansible'
         dest: /tmp/koji-ansible
       become: true
       become_user: "{{ invoking_user }}"
-      when: ansible_distribution == "OracleLinux"
 
     - name: Build ktdreyer.koji_ansible collection
       ansible.builtin.shell: "/tmp/koji-ansible/build-collection"
       changed_when: "1 != 1"
       become: true
       become_user: "{{ invoking_user }}"
-      when: ansible_distribution == "OracleLinux"
+
+
+    - name: Install ktdreyer.koji_ansible collection
+      ansible.builtin.shell: "ansible-galaxy collection install /tmp/koji-ansible/_build/ktdreyer-koji_ansible-*.tar.gz"
+      changed_when: "1 != 1"
+      become: true
+      become_user: "{{ invoking_user }}"
