@@ -94,7 +94,6 @@
         name: "{{ item }}"
         state: present
       loop:
-        - git
         - pandoc
         - ruby
         - ruby-dev
@@ -102,6 +101,19 @@
         - libvirt-daemon-system
         - vagrant
       when: ansible_distribution == 'Ubuntu'
+
+# Pacman jobs
+    - name: Install prerequisites for Arch Linux Based Distros
+      community.general.pacman:
+        name:
+          - libvirt
+          - ruby
+          - vagrant
+          - qemu
+          - pandoc-cli
+      when: ansible_os_family == 'Archlinux'
+
+# Common jobs
 
     - name: Start libvirtd
       ansible.builtin.service:
@@ -113,19 +125,27 @@
         name: libvirtd
         enabled: yes
 
-# Common jobs
-
     - name: Add invoking user to the libvirt group
       ansible.builtin.user:
         name: "{{ invoking_user }}"
         groups: libvirt
         append: yes
 
+    - name: Install vagrant-libvirt plugin for Arch Based Distros
+      ansible.builtin.shell: "VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 vagrant plugin install vagrant-libvirt"
+      changed_when: "1 != 1"
+      become: true
+      become_user: "{{ invoking_user }}"
+      when: ansible_os_family == 'Archlinux'
+
+# Skip this for Arch based distros for now due to dependency issue
+
     - name: Install vagrant-libvirt plugin
       ansible.builtin.shell: "vagrant plugin install vagrant-libvirt"
       changed_when: "1 != 1"
       become: true
       become_user: "{{ invoking_user }}"
+      when: ansible_distribution == "Rocky" or ansible_distribution == "OracleLinux" or ansible_distribution == 'Ubuntu'
 
     - name: Add Rocky Linux 9.2 box to Vagrant
       ansible.builtin.shell: "vagrant box add --name rockylinux/9 -f {{ rockybox }}"
@@ -158,21 +178,23 @@
       become: true
       become_user: "{{ invoking_user }}"
 
+    - name: Install ktdreyer.koji_ansible collection
+      ansible.builtin.shell: "ansible-galaxy collection install /tmp/koji-ansible/_build/ktdreyer-koji_ansible-*.tar.gz"
+      changed_when: "1 != 1"
+      become: true
+      become_user: "{{ invoking_user }}"
+
     - name: Clone ktdreyer.koji_ansible collection
       ansible.builtin.git:
         repo: 'https://github.com/ktdreyer/koji-ansible'
         dest: /tmp/koji-ansible
       become: true
       become_user: "{{ invoking_user }}"
+      when: ansible_distribution == "OracleLinux"
 
     - name: Build ktdreyer.koji_ansible collection
       ansible.builtin.shell: "/tmp/koji-ansible/build-collection"
       changed_when: "1 != 1"
       become: true
       become_user: "{{ invoking_user }}"
-
-    - name: Install ktdreyer.koji_ansible collection
-      ansible.builtin.shell: "ansible-galaxy collection install /tmp/koji-ansible/_build/ktdreyer-koji_ansible-*.tar.gz"
-      changed_when: "1 != 1"
-      become: true
-      become_user: "{{ invoking_user }}"
+      when: ansible_distribution == "OracleLinux"
