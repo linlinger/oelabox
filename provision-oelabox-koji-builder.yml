@@ -16,29 +16,29 @@
           192.168.1.24 koji.oelabox.local koji
       notify: restart_networkmanager
 
-    - name: Create ext4 filesystem on /dev/vdb
-      ansible.builtin.filesystem:
-        fstype: ext4
-        dev: /dev/vdb
+    # - name: Create ext4 filesystem on /dev/vdb
+    #   ansible.builtin.filesystem:
+    #     fstype: ext4
+    #     dev: /dev/vdb
 
-    - name: Mount /dev/vdb
-      ansible.builtin.mount:
-        fstype: ext4
-        src: /dev/vdb
-        path: /mnt
-        state: mounted
+    # - name: Mount /dev/vdb
+    #   ansible.builtin.mount:
+    #     fstype: ext4
+    #     src: /dev/vdb
+    #     path: /mnt
+    #     state: mounted
 
-    - name: Create /mnt/mock
-      ansible.builtin.file:
-        path: /mnt/mock
-        state: directory
-        mode: '0755'
+    # - name: Create /mnt/mock
+    #   ansible.builtin.file:
+    #     path: /mnt/mock
+    #     state: directory
+    #     mode: '0755'
 
-    - name: Symlink /var/lib/mock to /mnt/mock
-      ansible.builtin.file:
-        src: /mnt/mock
-        dest: /var/lib/mock
-        state: link
+    # - name: Symlink /var/lib/mock to /mnt/mock
+    #   ansible.builtin.file:
+    #     src: /mnt/mock
+    #     dest: /var/lib/mock
+    #     state: link
 
 - name: Create Koji Services
   ansible.builtin.import_playbook: init-oelabox-koji-services.yml

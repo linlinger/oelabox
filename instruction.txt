@@ -1,5 +1,5 @@
 # Hostname is required to set beforehand 
-
+# All machine need to set dns to the dns server, including dns server itself . but set a upstream dns server plz
 # Order
 ## Set up DNS Server
 ansible-playbook provision-oelabox-dns.yml -i inventory.ini -Kk
@@ -13,6 +13,8 @@ ansible-playbook provision-oelabox-ipa.yml -i inventory.ini -Kk -v
 ## Create users
 ansible-playbook init-oelabox-ipa-team.yml -i inventory.ini -Kk -v
 
+## Set up ipaclient 
+ansible-playbook provision-oelabox-ipa-client.yml -i inventory.ini -Kk -v
 
 
 
