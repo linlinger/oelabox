@@ -1,6 +1,6 @@
 ---
 - name: Configure IPA client
-  hosts: "{{ host | default(ipaclient) }}"
+  hosts: ipaclient
   become: true
 
   vars_files:
