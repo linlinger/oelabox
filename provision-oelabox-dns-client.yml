@@ -1,6 +1,6 @@
 ---
 - name: Configure Oela Box DNS client.
-  hosts: "{{ host | default(dnsclient) }}"
+  hosts: dnsclient
   become: true
 
   handlers:
