@@ -23,6 +23,6 @@ oela_smtp_ca_path: "/etc/pki/tls/certs"
 oela_smtp_ca_file: "/etc/pki/tls/certs/ca-bundle.crt"
 allowed_rsyslog_clients:
   - 127.0.0.1
-  - 192.168.121.0/24
+  - 192.168.1.0/24
 remote_rsyslog_host: ""
 ...

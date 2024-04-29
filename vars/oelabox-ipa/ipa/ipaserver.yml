@@ -11,6 +11,6 @@ ipaserver_setup_firewalld: true
 ipaclient_no_ntp: true
 ipaclient_mkhomedir: true
 ipaserver_no_hbac_allow: true
-ipaserver_reverse_zones: ["121.168.192.in-addr.arpa."]
+ipaserver_reverse_zones: ["1.168.192.in-addr.arpa."]
 ipatype: server
 ...

@@ -8,11 +8,11 @@ $TTL 8h
 
                   IN NS   ns1.oelabox.local.
 
-dns               IN A    192.168.121.10
-ns1               IN A    192.168.121.10
-@		  IN A    192.168.121.10
-ipa		  IN A	  192.168.121.11
-koji		  IN A    192.168.121.12
+dns               IN A    192.168.1.21
+ns1               IN A    192.168.1.21
+@		  IN A    192.168.1.21
+ipa		  IN A	  192.168.1.22
+koji		  IN A    192.168.1.24
 
 _kerberos-master._tcp.oelabox.local. 3600 IN SRV 0 100 88 ipa.oelabox.local.
 _kerberos-master._udp.oelabox.local. 3600 IN SRV 0 100 88 ipa.oelabox.local.
