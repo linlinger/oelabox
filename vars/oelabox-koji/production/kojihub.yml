@@ -102,7 +102,7 @@ postgresql_hba_entries:
   - type: host
     database: koji
     user: koji
-    address: '192.168.121.0/24'
+    address: '192.168.1.0/24'
     auth_method: md5
 
 postgresql_databases:

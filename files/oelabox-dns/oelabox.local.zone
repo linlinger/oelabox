@@ -26,4 +26,4 @@ _kpasswd._udp.oelabox.local. 3600 IN SRV 0 100 464 ipa.oelabox.local.
 _kpasswd.oelabox.local. 3600 IN URI 0 100 "krb5srv:m:tcp:ipa.oelabox.local."
 _kpasswd.oelabox.local. 3600 IN URI 0 100 "krb5srv:m:udp:ipa.oelabox.local."
 _ldap._tcp.oelabox.local. 3600 IN SRV 0 100 389 ipa.oelabox.local.
-ipa-ca.oelabox.local. 3600 IN A 192.168.121.11
+ipa-ca.oelabox.local. 3600 IN A 192.168.1.22

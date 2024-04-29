@@ -5,3 +5,34 @@ ansible-playbook provision-oelabox-dns.yml -i inventory.ini -Kk
 ansible-playbook provision-oelabox-dns-client.yml -i inventory.ini -Kk
 
 # Install IPA Server
+
+
+
+
+
+
+
+
+# Introduction 
+
+这是一个用 Ruby 编写的 Vagrant 配置文件，用于定义和配置虚拟机环境。在这个配置文件中，您定义了三个虚拟机：dnsserver、ipaserver和kojiserver，以及一个名为tools的 provisioner。
+
+让我解释一下这个配置文件的主要部分：
+
+    Vagrant 配置声明：这个配置文件使用 Vagrant.configure("2") do |config| 开始，表示使用 Vagrant 2.x 的配置语法。
+
+    默认提供者和并行设置：通过设置 ENV['VAGRANT_DEFAULT_PROVIDER'] 和 ENV['VAGRANT_NO_PARALLEL'] 环境变量，配置了默认的虚拟化提供者为 libvirt，并禁用了 Vagrant 的并行执行。
+
+    虚拟机配置：在 config.vm.define 块内部，定义了每个虚拟机的配置。每个块都包含了虚拟机的名称、主机名、网络设置以及提供者相关的配置。
+
+    Provisioning（配置管理）：在每个虚拟机定义块内部，使用 config.vm.provision "ansible" 来配置 Ansible 作为配置管理工具。每个 provisioner 都指定了要运行的 Ansible playbook 文件、Ansible inventory 文件和额外的变量。这些 playbook 文件会按照定义的顺序在相应的虚拟机上执行。
+
+    Tools provisioner：在文件末尾，还定义了一个名为 "tools" 的 provisioner，它也使用 Ansible 进行配置管理。这个 provisioner 可能会在虚拟机配置完成后执行一些其他的任务，如安装软件、配置环境等。
+
+根据这个配置文件，playbook 的执行顺序如下：
+
+    首先，执行 setup-oelabox-tools.yml playbook 来配置 "tools" 虚拟机。
+    然后，依次执行 provision-oelabox-dns.yml、provision-oelabox-dns-client.yml、provision-oelabox-ipa.yml、init-oelabox-ipa-team.yml、provision-oelabox-ipa-client.yml、provision-oelabox-koji-builder.yml 和 init-oelabox-koji-ecosystem.yml 这些 playbook，分别在 dnsserver、ipaserver 和 kojiserver 虚拟机上执行。
+    每个 playbook 的执行会根据定义的任务内容，配置相应的服务器环境。
+
+这样，通过 Vagrant 和 Ansible 结合，可以方便地定义和管理虚拟机环境，并按照预定义的顺序自动化执行配置任务。
