@@ -1,0 +1,3 @@
+# Set up DNS Server
+ansible-playbook provision-oelabox-dns.yml -i inventory.ini -Kk
+

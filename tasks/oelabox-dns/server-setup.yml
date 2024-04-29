@@ -22,10 +22,10 @@
   notify:
     - restart_named
 
-- name: "/var/named/121.168.192.in-addr.arpa.zone"
+- name: "/var/named/1.168.192.in-addr.arpa.zone"
   ansible.builtin.copy:
-    src: files/oelabox-dns/121.168.192.in-addr.arpa.zone
-    dest: /var/named/121.168.192.in-addr.arpa.zone
+    src: files/oelabox-dns/1.168.192.in-addr.arpa.zone
+    dest: /var/named/1.168.192.in-addr.arpa.zone
     owner: root
     group: named
     mode: '0640'
