@@ -23,56 +23,56 @@
   become_user: koji
   loop:
     - build-modules
-    - dist-oela8
-    - dist-oela8-build
-    - dist-oela8-compose
-    - dist-oela8-module-compose
-    - dist-oela8-updates
-    - dist-oela8-updates-build
-    - dist-oela8_9-updates-build
+    - dist-qingsong8
+    - dist-qingsong8-build
+    - dist-qingsong8-compose
+    - dist-qingsong8-module-compose
+    - dist-qingsong8-updates
+    - dist-qingsong8-updates-build
+    - dist-qingsong8_9-updates-build
     - el8
     - trash
     - trashcan
 
-- name: Setup dist-oela8-build
-  ansible.builtin.shell: "set -o pipefail && koji add-tag-inheritance dist-oela8-build {{ item.Tag }} --priority {{ item.Priority }}"
+- name: Setup dist-qingsong8-build
+  ansible.builtin.shell: "set -o pipefail && koji add-tag-inheritance dist-qingsong8-build {{ item.Tag }} --priority {{ item.Priority }}"
   changed_when: "1 != 1"
   become: true
   become_user: koji
   loop:
     - { Tag: 'el8', Priority: '10' }
-    - { Tag: 'dist-oela8', Priority: '20' }
+    - { Tag: 'dist-qingsong8', Priority: '20' }
     - { Tag: 'build-modules', Priority: '30' }
 
 
-- name: Setup dist-oela8-updates-build
-  ansible.builtin.shell: "set -o pipefail && koji add-tag-inheritance dist-oela8-updates-build {{ item.Tag }} --priority {{ item.Priority }}"
+- name: Setup dist-qingsong8-updates-build
+  ansible.builtin.shell: "set -o pipefail && koji add-tag-inheritance dist-qingsong8-updates-build {{ item.Tag }} --priority {{ item.Priority }}"
   changed_when: "1 != 1"
   become: true
   become_user: koji
   loop:
     - { Tag: 'el8', Priority: '10' }
-    - { Tag: 'dist-oela8-updates', Priority: '20' }
-    - { Tag: 'dist-oela8-build', Priority: '30' }
+    - { Tag: 'dist-qingsong8-updates', Priority: '20' }
+    - { Tag: 'dist-qingsong8-build', Priority: '30' }
 
 
-- name: Setup dist-oela8-updates
-  ansible.builtin.shell: "set -o pipefail && koji add-tag-inheritance dist-oela8-updates {{ item.Tag }} --priority {{ item.Priority }}"
+- name: Setup dist-qingsong8-updates
+  ansible.builtin.shell: "set -o pipefail && koji add-tag-inheritance dist-qingsong8-updates {{ item.Tag }} --priority {{ item.Priority }}"
   changed_when: "1 != 1"
   become: true
   become_user: koji
   loop:
-    - { Tag: 'dist-oela8', Priority: '10' }
+    - { Tag: 'dist-qingsong8', Priority: '10' }
 
-- name: Setup dist-oela8_9-updates-build
-  ansible.builtin.shell: "set -o pipefail && koji add-tag-inheritance dist-oela8_9-updates-build {{ item.Tag }} --priority {{ item.Priority }}"
+- name: Setup dist-qingsong8_9-updates-build
+  ansible.builtin.shell: "set -o pipefail && koji add-tag-inheritance dist-qingsong8_9-updates-build {{ item.Tag }} --priority {{ item.Priority }}"
   changed_when: "1 != 1"
   become: true
   become_user: koji
   loop:
     - { Tag: 'el8', Priority: '10' }
-    - { Tag: 'dist-oela8-updates', Priority: '20' }
-    - { Tag: 'dist-oela8-build', Priority: '30' }
+    - { Tag: 'dist-qingsong8-updates', Priority: '20' }
+    - { Tag: 'dist-qingsong8-build', Priority: '30' }
 
 
 - name: Setup Build Targets Arch
@@ -81,9 +81,9 @@
   become: true
   become_user: koji
   loop:
-    - dist-oela8-build
-    - dist-oela8-updates-build
-    - dist-oela8_9-updates-build
+    - dist-qingsong8-build
+    - dist-qingsong8-updates-build
+    - dist-qingsong8_9-updates-build
 
 - name: Setup Build Targets
   ansible.builtin.shell: "set -o pipefail && koji add-target {{ item.A }} {{ item.B }} {{ item.C }}"
@@ -91,9 +91,9 @@
   become: true
   become_user: koji
   loop:
-    - { A: 'dist-oela8', B: 'dist-oela8-build', C: 'dist-oela8' }
-    - { A: 'dist-oela8-updates', B: 'dist-oela8-updates-build', C: 'dist-oela8-updates' }
-    - { A: 'dist-oela8_9-updates', B: 'dist-oela8_9-updates-build', C: 'dist-oela8' }
+    - { A: 'dist-qingsong8', B: 'dist-qingsong8-build', C: 'dist-qingsong8' }
+    - { A: 'dist-qingsong8-updates', B: 'dist-qingsong8-updates-build', C: 'dist-qingsong8-updates' }
+    - { A: 'dist-qingsong8_9-updates', B: 'dist-qingsong8_9-updates-build', C: 'dist-qingsong8' }
 
 - name: Create 'build' build group
   ansible.builtin.shell: "set -o pipefail && koji add-group {{ item }} build"
@@ -101,9 +101,9 @@
   become: true
   become_user: koji
   loop:
-    - dist-oela8-build
-    - dist-oela8-updates-build
-    - dist-oela8_9-updates-build
+    - dist-qingsong8-build
+    - dist-qingsong8-updates-build
+    - dist-qingsong8_9-updates-build
 
 - name: Add 'build' group pkgs
   ansible.builtin.shell: >
@@ -141,9 +141,9 @@
   become: true
   become_user: koji
   loop:
-    - dist-oela8-build
-    - dist-oela8-updates-build
-    - dist-oela8_9-updates-build
+    - dist-qingsong8-build
+    - dist-qingsong8-updates-build
+    - dist-qingsong8_9-updates-build
 
 - name: Create 'srpm-build' build group
   ansible.builtin.shell: "set -o pipefail && koji add-group {{ item }} srpm-build"
@@ -151,9 +151,9 @@
   become: true
   become_user: koji
   loop:
-    - dist-oela8-build
-    - dist-oela8-updates-build
-    - dist-oela8_9-updates-build
+    - dist-qingsong8-build
+    - dist-qingsong8-updates-build
+    - dist-qingsong8_9-updates-build
 
 - name: Add 'srpm-build' group pkgs
   ansible.builtin.shell: >
@@ -172,54 +172,54 @@
   become: true
   become_user: koji
   loop:
-    - dist-oela8-build
-    - dist-oela8-updates-build
-    - dist-oela8_9-updates-build
+    - dist-qingsong8-build
+    - dist-qingsong8-updates-build
+    - dist-qingsong8_9-updates-build
  
 - name: Setup External Repo
   ansible.builtin.shell: >
-    set -o pipefail && koji add-external-repo -t dist-oela8-build rocky-8-bootstrap https://koji.rockylinux.org/kojifiles/repos/dist-rocky8-build/latest/\$arch -m bare
+    set -o pipefail && koji add-external-repo -t dist-qingsong8-build rocky-8-bootstrap https://koji.rockylinux.org/kojifiles/repos/dist-rocky8-build/latest/\$arch -m bare
   changed_when: "1 != 1"
   become: true
   become_user: koji
 
-- name: Copy getsrc sources over
-  ansible.builtin.copy:
-    src: files/oelabox-koji/getsrc
-    dest: /tmp
-    owner: vagrant
-    group: vagrant
-    mode: '0644'
+# - name: Copy getsrc sources over
+#   ansible.builtin.copy:
+#     src: files/oelabox-koji/getsrc
+#     dest: /tmp
+#     owner: vagrant
+#     group: vagrant
+#     mode: '0644'
 
-- name: Create getsrc.sh tar archive dir
-  ansible.builtin.file:
-    path: /tmp/getsrc/getsrc-1.0.0
-    state: directory
-    owner: vagrant
-    group: vagrant
-    mode: '0755'
+# - name: Create getsrc.sh tar archive dir
+#   ansible.builtin.file:
+#     path: /tmp/getsrc/getsrc-1.0.0
+#     state: directory
+#     owner: vagrant
+#     group: vagrant
+#     mode: '0755'
 
-- name: Mv getsrc.sh to tar archive dir
-  ansible.builtin.command: mv /tmp/getsrc/SOURCES/getsrc.sh /tmp/getsrc/getsrc-1.0.0/getsrc.sh
+# - name: Mv getsrc.sh to tar archive dir
+#   ansible.builtin.command: mv /tmp/getsrc/SOURCES/getsrc.sh /tmp/getsrc/getsrc-1.0.0/getsrc.sh
 
-- name: Create getsrc.sh tar archive
-  community.general.archive:
-    path: /tmp/getsrc/getsrc-1.0.0
-    dest: /tmp/getsrc/SOURCES/getsrc-1.0.0.tar.gz
+# - name: Create getsrc.sh tar archive
+#   community.general.archive:
+#     path: /tmp/getsrc/getsrc-1.0.0
+#     dest: /tmp/getsrc/SOURCES/getsrc-1.0.0.tar.gz
 
-- name: Build getsrc srpm
-  ansible.builtin.shell: "set -o pipefail && mock -r rocky-8-x86_64 --sources /tmp/getsrc/SOURCES --spec /tmp/getsrc/SPECS/getsrc.spec --resultdir /tmp/getsrc/result --buildsrpm"
-  changed_when: "1 != 1"
+# - name: Build getsrc srpm
+#   ansible.builtin.shell: "set -o pipefail && mock -r rocky-8-x86_64 --sources /tmp/getsrc/SOURCES --spec /tmp/getsrc/SPECS/getsrc.spec --resultdir /tmp/getsrc/result --buildsrpm"
+#   changed_when: "1 != 1"
 
-- name: Add getsrc to dist-oela8
-  ansible.builtin.shell: "set -o pipefail && koji add-pkg dist-oela8 getsrc --owner oelakoji"
-  changed_when: "1 != 1"
-  become: true
-  become_user: koji
+# - name: Add getsrc to dist-qingsong8
+#   ansible.builtin.shell: "set -o pipefail && koji add-pkg dist-qingsong8 getsrc --owner oelakoji"
+#   changed_when: "1 != 1"
+#   become: true
+#   become_user: koji
 
-- name: Build getsrc in koji
-  ansible.builtin.shell: "set -o pipefail && koji build dist-oela8 /tmp/getsrc/result/getsrc-1.0.0-1.el8.src.rpm"
-  changed_when: "1 != 1"
-  become: true
-  become_user: koji
+# - name: Build getsrc in koji
+#   ansible.builtin.shell: "set -o pipefail && koji build dist-qingsong8 /tmp/getsrc/result/getsrc-1.0.0-1.el8.src.rpm"
+#   changed_when: "1 != 1"
+#   become: true
+#   become_user: koji
 ...
