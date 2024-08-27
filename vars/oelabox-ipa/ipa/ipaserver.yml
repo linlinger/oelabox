@@ -1,7 +1,7 @@
 ---
 # IPA Server
-ipaserver_domain: oelabox.local
-ipaserver_realm: OELABOX.LOCAL
+ipaserver_domain: qslinux.com
+ipaserver_realm: QSLINUX.COM
 ipaserver_setup_dns: true
 ipaserver_setup_kra: true
 ipaserver_auto_forwarders: true

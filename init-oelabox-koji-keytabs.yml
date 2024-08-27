@@ -5,23 +5,23 @@
 
   vars:
     ipa_admin: admin
-    host: koji.oelabox.local
-    ipa_server: ipa.oelabox.local
+    host: koji.qslinux.com
+    ipa_server: ipa.qslinux.com
     ipa_owner: root
     ipa_keytab_file_perms: '0644'
 
     keytabs:
       - keytab:
-        service: compile/koji.oelabox.local
+        service: compile/koji.qslinux.com
         path: /etc/kojid.keytab
       - keytab:
-        service: HTTP/koji.oelabox.local
+        service: HTTP/koji.qslinux.com
         path: /etc/keytabs/koji-web.keytab
       - keytab:
-        service: kojira/koji.oelabox.local
+        service: kojira/koji.qslinux.com
         path: /etc/keytabs/kojira.keytab
       - keytab:
-        service: koji-gc/koji.oelabox.local
+        service: koji-gc/koji.qslinux.com
         path: /etc/keytabs/koji-gc.keytab
 
   tasks:

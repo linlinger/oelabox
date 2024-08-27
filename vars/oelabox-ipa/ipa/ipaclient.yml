@@ -1,7 +1,7 @@
 ---
 # IPA Client Vars
-ipaclient_domain: oelabox.local
-ipaclient_realm: OELABOX.LOCAL
+ipaclient_domain: qslinux.com
+ipaclient_realm: QSLINUX.COM
 ipaadmin_principal: admin
 ipaclient_no_ntp: true
 ipaclient_mkhomedir: true

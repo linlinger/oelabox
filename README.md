@@ -66,7 +66,7 @@ vagrant up
 This is weird and I know it's weird, but trust me. I discovered this quirk from rapidly resetting Oela Box during development. It caused a lot of headache. Once I actually timed it and found vagrant destroy, wait 10 minutes, and vagrant up was the way I had to do it.
 
 ## Local Web Interfaces.
-The Free IPA and Koji web interfaces can be found at https://ipa.oelabox.local and https://koji.oelabox.local/koji. They're only accessible locally.
+The Free IPA and Koji web interfaces can be found at https://ipa.qslinux.com and https://koji.qslinux.com/koji. They're only accessible locally.
 
 ## Login To Koji Server and Start A Build
 
@@ -75,19 +75,19 @@ Login through ssh. (I usually use a VNC viewer since it's more stable.)
 vagrant ssh kojiserver
 ```
 
-Login to Kerberos as oelakoji. (Password: ThisIsNotMyPassword1!)
+Login to Kerberos as qingsongkoji. (Password: ThisIsNotMyPassword1!)
 ```
-kinit oelakoji
+kinit qingsongkoji
 ```
 
-Test Koji authentication. (Should say "Hello, oelakoji!" in a randomly chosen language)
+Test Koji authentication. (Should say "Hello, qingsongkoji!" in a randomly chosen language)
 ```
 koji moshimoshi
 ```
 
 Add bash package to dist-oela8.
 ```
-koji add-pkg dist-oela8 bash --owner oelakoji
+koji add-pkg dist-oela8 bash --owner qingsongkoji
 ```
 
 Start build of Bash from openela-main SCM.
@@ -95,6 +95,6 @@ Start build of Bash from openela-main SCM.
 koji build dist-oela8 'git+https://github.com/openela-main/bash#el8'
 ```
 
-You can now watch the task at https://koji.oelabox.local/koji or on the command line.
+You can now watch the task at https://koji.qslinux.com/koji or on the command line.
 
 

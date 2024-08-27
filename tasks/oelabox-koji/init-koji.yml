@@ -1,20 +1,20 @@
 ---
 # Init koji
 - name: kinit as koji admin using password
-  ansible.builtin.shell: "set -o pipefail && echo \"{{ oelakoji_password }}\" | kinit oelakoji@OELABOX.LOCAL"
+  ansible.builtin.shell: "set -o pipefail && echo \"{{ qingsongkoji_password }}\" | kinit qingsongkoji@QSLINUX.COM"
   check_mode: false
   changed_when: "1 != 1"
   become: true
   become_user: koji
-    #when: oelakoji_has_password | bool
+    #when: qingsongkoji_has_password | bool
 
     #- name: kinit as koji admin using keytab
-    #  ansible.builtin.shell: "set -o pipefail && kinit -kt /home/koji/.koji/keytab koji/oelakoji@OELABOX.LOCAL"
+    #  ansible.builtin.shell: "set -o pipefail && kinit -kt /home/koji/.koji/keytab koji/qingsongkoji@QSLINUX.COM"
     #  check_mode: false
     #  changed_when: "1 != 1"
     #  become: true
     #  become_user: koji
-    #  when: not oelakoji_has_password | bool
+    #  when: not qingsongkoji_has_password | bool
 
 - name: Import current necessary tags
   ansible.builtin.shell: "set -o pipefail && koji add-tag {{ item }}"
@@ -212,7 +212,7 @@
 #   changed_when: "1 != 1"
 
 # - name: Add getsrc to dist-qingsong8
-#   ansible.builtin.shell: "set -o pipefail && koji add-pkg dist-qingsong8 getsrc --owner oelakoji"
+#   ansible.builtin.shell: "set -o pipefail && koji add-pkg dist-qingsong8 getsrc --owner qingsongkoji"
 #   changed_when: "1 != 1"
 #   become: true
 #   become_user: koji

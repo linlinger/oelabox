@@ -2,4 +2,4 @@ resolv_entries:
   - entry:
     nameserver: 192.168.1.21
     search: 
-      - oelabox.local
+      - qslinux.com

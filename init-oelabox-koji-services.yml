@@ -6,10 +6,10 @@
     ipa_admin: admin
     ipaadmin_password: freeloader
     services:
-      - compile/koji.oelabox.local
-      - HTTP/koji.oelabox.local
-      - kojira/koji.oelabox.local
-      - koji-gc/koji.oelabox.local
+      - compile/koji.qslinux.com
+      - HTTP/koji.qslinux.com
+      - kojira/koji.qslinux.com
+      - koji-gc/koji.qslinux.com
 
   tasks:
     - name: Create services

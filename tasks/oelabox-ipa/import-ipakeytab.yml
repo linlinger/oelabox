@@ -5,7 +5,7 @@
 # What: Pulls keytabs for a kerberos service
 # What is expected:
 #  -> host: The host in the inventory
-#  -> ipa_service: using this format: SVC/hostname.oelabox.local@OELABOX.LOCAL
+#  -> ipa_service: using this format: SVC/hostname.qslinux.com@QSLINUX.COM
 #     Note: This service MUST exist
 #  -> ipa_keytab_fullpath: The full path to the keytab. Example: /etc/gitlab/gitlab.keytab
 #  -> ipa_server: This needs to be one of the IPA servers

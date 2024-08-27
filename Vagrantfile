@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
 
   # DNS Server
   config.vm.define :dnsserver do |dns|
-    dns.vm.hostname = 'dns.oelabox.local'
+    dns.vm.hostname = 'dns.qslinux.com'
     dns.vm.network :private_network, ip: "192.168.121.10"
 
     dns.vm.provider :libvirt do |v|
@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
 
   # IPA Server
   config.vm.define :ipaserver do |ipa|
-    ipa.vm.hostname = 'ipa.oelabox.local'
+    ipa.vm.hostname = 'ipa.qslinux.com'
     ipa.vm.network :private_network, ip: "192.168.121.11"
 
     ipa.vm.provider :libvirt do |v|
@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :kojiserver do |koji|
     koji.vm.box = "centos/stream8"
 
-    koji.vm.hostname = 'koji.oelabox.local'
+    koji.vm.hostname = 'koji.qslinux.com'
     koji.vm.network :private_network, ip: "192.168.121.12"
 
     koji.vm.provider :libvirt do |v|
@@ -78,7 +78,7 @@ Vagrant.configure("2") do |config|
         host: "ipaclient",
         resolv_entries: [
               nameserver: "192.168.121.11",
-              search: [ "oelabox.local" ],
+              search: [ "qslinux.com" ],
         ],
       }
     end

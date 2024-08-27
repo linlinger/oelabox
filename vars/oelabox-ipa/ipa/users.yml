@@ -3,7 +3,7 @@ users:
   - name: oelauser
     first: Oela
     last: User
-    email: oelauser@oelabox.local
+    email: oelauser@qslinux.com
     password: ThisIsNotMyPassword1!
     title: Oela Box User
     loginshell: /bin/bash

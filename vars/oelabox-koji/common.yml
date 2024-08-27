@@ -1,20 +1,20 @@
 ---
-oela_ipa_realm: "OELABOX.LOCAL"
+oela_ipa_realm: "QSLINUX.COM"
 oela_ldap_bind_dn: "uid=binder,cn=sysaccounts,cn=etc,dc=oelabox,dc=local"
 oela_ldap_user_basedn: "cn=users,cn=accounts,dc=oelabox,dc=local"
 oela_ldap_group_basedn: "cn=groups,cn=accounts,dc=oelabox,dc=local"
 oela_ldap_account_basedn: "cn=accounts,dc=oelabox,dc=local"
 # Requires jinja 2.9+
 oela_ipaserver_list: "{{ groups['ipaserver'] + groups['ipareplicas'] }}"
-oela_ipaserver_lb: "ipa.oelabox.local"
+oela_ipaserver_lb: "ipa.qslinux.com"
 # These will be in a vault
 #rocky_ldap_bind_pw: "{{ ipa_binder_password }}"
 oela_ldap_bind_pw: freeloader
 
-oela_smtp_address: "oelabox.local"
+oela_smtp_address: "qslinux.com"
 oela_smtp_port: "587"
 # username / pw need to be setup
-oela_smtp_domain: "oelabox.local"
+oela_smtp_domain: "qslinux.com"
 oela_smtp_authentication: "login"
 oela_smtp_enable_starttls_auto: "true"
 oela_smtp_tls: "true"

@@ -13,7 +13,7 @@
         content: |
           127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
           ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-          192.168.1.24 koji.oelabox.local koji
+          192.168.1.24 koji.qslinux.com koji
       notify: restart_networkmanager
 
     # - name: Create ext4 filesystem on /dev/vdb
@@ -133,7 +133,7 @@
 
   post_tasks:
     - name: kinit as koji admin using password
-      ansible.builtin.shell: "set -o pipefail && echo \"{{ oelakoji_password }}\" | kinit oelakoji@OELABOX.LOCAL"
+      ansible.builtin.shell: "set -o pipefail && echo \"{{ qingsongkoji_password }}\" | kinit qingsongkoji@QSLINUX.COM"
       check_mode: false
       changed_when: "1 != 1"
       become: true
@@ -142,7 +142,7 @@
     - name: "Configure Koji builder for hub"
       ktdreyer.koji_ansible.koji_host:
         koji: koji
-        name: koji.oelabox.local
+        name: koji.qslinux.com
         arches: [x86_64,i386]
         state: enabled
         channels:

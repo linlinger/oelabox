@@ -1,7 +1,7 @@
 ---
 # koji hub settings
 # This should be the front-facing URL of koji
-koji_url_name: koji.oelabox.local
+koji_url_name: koji.qslinux.com
 
 # Use an internal CA (IPA)
 koji_internal_ca: true
@@ -23,7 +23,7 @@ koji_files_url: "https://{{ koji_url_name }}/kojifiles"
 # Change before deployment or store in vault
 koji_hub_secret: cK5XCuzMSXJfgA7yFvXkGwFu
 #koji_web_cacert: /etc/pki/tls/certs/ca-bundle.crt
-#koji_web_cacert: /etc/pki/tls/certs/koji.oelabox.local.crt
+#koji_web_cacert: /etc/pki/tls/certs/koji.qslinux.com.crt
 koji_web_cacert: /etc/ipa/ca.crt
 koji_web_tls_cert: "/etc/pki/tls/certs/{{ ansible_fqdn }}.crt"
 koji_web_tls_key: "/etc/pki/tls/private/{{ ansible_fqdn }}.key"
@@ -31,51 +31,51 @@ koji_web_tls_key: "/etc/pki/tls/private/{{ ansible_fqdn }}.key"
 # Kojira
 koji_kojira: true
 koji_kojira_user: kojira
-koji_kojira_user_kerb: kojira/koji.oelabox.local
-koji_kojira_principal: kojira/koji.oelabox.local@OELABOX.LOCAL
+koji_kojira_user_kerb: kojira/koji.qslinux.com
+koji_kojira_principal: kojira/koji.qslinux.com@QSLINUX.COM
 koji_kojira_keytab: /etc/keytabs/kojira.keytab
 
 # MBS
 koji_mbs: true
 koji_mbs_user: mbs
-koji_mbs_user_kerb: mbs/mbs.oelabox.local
-koji_mbs_principal: mbs/mbs.oelabox.local@OELABOX.LOCAL
+koji_mbs_user_kerb: mbs/mbs.qslinux.com
+koji_mbs_principal: mbs/mbs.qslinux.com@QSLINUX.COM
 koji_mbs_keytab: /etc/keytabs/mbs.keytab
 
 # GC
 koji_gc_keytab: /etc/keytabs/koji-gc.keytab
-koji_gc_principal: koji-gc/koji.oelabox.local@OELABOX.LOCAL
+koji_gc_principal: koji-gc/koji.qslinux.com@QSLINUX.COM
 
 # Sigul
 koji_sigul: true
 koji_sigul_user: sigul
-koji_sigul_user_kerb: sigul/sigul.oelabox.local
-koji_sigul_principal: sigul/sigul.oelabox.local@OELABOX.LOCAL
+koji_sigul_user_kerb: sigul/sigul.qslinux.com
+koji_sigul_principal: sigul/sigul.qslinux.com@QSLINUX.COM
 
 # NFS? We need a place.
 koji_nfs: false
 koji_mount: /mnt/koji
-koji_nfs_path: nfs.oelabox.local:/export/koji
+koji_nfs_path: nfs.qslinux.com:/export/koji
 
 # Koji Admin Settings
 koji_admin_client: true
-koji_admin_user: oelakoji
-koji_admin_principal: oelakoji@OELABOX.LOCAL
+koji_admin_user: qingsongkoji
+koji_admin_principal: qingsongkoji@QSLINUX.COM
 koji_admin_localuser: true
 koji_admin_localuser_name: koji
 
 # Hub Settings
-koji_hub_principal: "host/kojihub@OELABOX.LOCAL"
-koji_hub_proxy_principals: "HTTP/{{ inventory_hostname }}@OELABOX.LOCAL"
+koji_hub_principal: "host/kojihub@QSLINUX.COM"
+koji_hub_proxy_principals: "HTTP/{{ inventory_hostname }}@QSLINUX.COM"
 koji_hub_keytab: /etc/keytabs/host.keytab
-koji_hub_principal_format: compile/%s@OELABOX.LOCAL
+koji_hub_principal_format: compile/%s@QSLINUX.COM
 # This should be sufficient even for LE
 koji_hub_ca: "{{ koji_web_cacert }}"
 
 # Koji FAS Syncing
 # This isn't implemented yet in the role
 koji_fas_sync: false
-koji_fas_url: https://accounts.oelabox.local
+koji_fas_url: https://accounts.qslinux.com
 
 # IPA Certs if Required
 ipa_getcert_requested_hostnames:

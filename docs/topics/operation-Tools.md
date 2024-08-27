@@ -29,9 +29,9 @@ Oela Importer is a tool designed to import OpenELA RPM sources from the openela-
 #### Basic Usage
 Oela Importer is fairly easy to use and basic usage of it can be enough to get things going the way one sees fit.
 
-In this example Oela Importer will import all OpenELA RPM sources from the 'el8' branch from the 'openela-main' SCM on GitHub to the 'dist-oela8' dist tag in Koji as the 'oelakoji' user.
+In this example Oela Importer will import all OpenELA RPM sources from the 'el8' branch from the 'openela-main' SCM on GitHub to the 'dist-oela8' dist tag in Koji as the 'qingsongkoji' user.
 ```
-python3.11 ~/tools/oelaimporter/oelaimporter.py -u oelakoji -s openela-main -d dist-oela8 -b el8
+python3.11 ~/tools/oelaimporter/oelaimporter.py -u qingsongkoji -s openela-main -d dist-oela8 -b el8
 ```
 
 We should see an output like the following.
@@ -60,7 +60,7 @@ Something else to mention is the fact we're not using a GitHub API token, so we 
 
 Oela Importer has support for using a GitHub API token to speed things up. All we have to do is add the '-t' argument with our API token.
 ```
-python3.11 ~/tools/oelaimporter/oelaimporter.py -t YOUR_TOKEN_HERE -u oelakoji -s openela-main -d dist-oela8 -b el8
+python3.11 ~/tools/oelaimporter/oelaimporter.py -t YOUR_TOKEN_HERE -u qingsongkoji -s openela-main -d dist-oela8 -b el8
 ```
 
 Using our token we bump up our API request limit to 5,000 requests per hour. This allows us to import a lot more repositories which should make importing much faster.
@@ -72,7 +72,7 @@ Previously we were importing sources from a specific branch. Now we can import s
 
 In this example we'll be importing the 'el8' and 'el-8.8' branches using a regex pattern. We use the '-r' flag to enable regex mode.
 ```
-python3.11 ~/tools/oelaimporter/oelaimporter.py -u oelakoji -s openela-main -d dist-oela8 -r -b "^el8$|^el-8.8$"
+python3.11 ~/tools/oelaimporter/oelaimporter.py -u qingsongkoji -s openela-main -d dist-oela8 -r -b "^el8$|^el-8.8$"
 ```
 
 We should see an output like the following.
@@ -98,7 +98,7 @@ Oela Importer supports outputting import data in a machine readable format. The 
 
 We can enable machine readable mode with the '-m' flag.
 ```
-python3.11 ~/tools/oelaimporter/oelaimporter.py -u oelakoji -s openela-main -d dist-oela8 -b el8 -m
+python3.11 ~/tools/oelaimporter/oelaimporter.py -u qingsongkoji -s openela-main -d dist-oela8 -b el8 -m
 ```
 
 We should see an output like the following.
@@ -112,7 +112,7 @@ Machine readable mode allows us to use external scripts or programs to parse the
 
 This allows us to do things like write a logging script in Bash. Make sure to `sudo dnf install -y expect jq` to get the 'unbuffer' and 'jq' commands.
 ```
-unbuffer python3.11 ~/tools/oelaimporter/oelaimporter.py -u oelakoji -s openela-main -d dist-oela8 -b el8 -m -c '10' |
+unbuffer python3.11 ~/tools/oelaimporter/oelaimporter.py -u qingsongkoji -s openela-main -d dist-oela8 -b el8 -m -c '10' |
 while read json
 do
     repo=$(echo $json | jq -r -M '.repo')
@@ -162,7 +162,7 @@ We can use the chunking feature in various ways. These are just a couple example
 
 We can tell Oela Importer to only import 10 repositories.
 ```
-python3.11 ~/tools/oelaimporter/oelaimporter.py -u oelakoji -s openela-main -d dist-oela8 -b el8 -c '10'
+python3.11 ~/tools/oelaimporter/oelaimporter.py -u qingsongkoji -s openela-main -d dist-oela8 -b el8 -c '10'
 ```
 
 We should see an output like so.
@@ -212,7 +212,7 @@ We should see an output like so.
 
 We can tell Oela Importer to only import repositories starting from index 10 and ending at index 15.
 ```
-python3.11 ~/tools/oelaimporter/oelaimporter.py -u oelakoji -s openela-main -d dist-oela8 -b el8 -c '10:15'
+python3.11 ~/tools/oelaimporter/oelaimporter.py -u qingsongkoji -s openela-main -d dist-oela8 -b el8 -c '10:15'
 ```
 
 We should see an output like so.
@@ -247,7 +247,7 @@ Not only does Oela Importer support mass importing it also supports doing specif
 
 For example we can tell Oela Importer to only import bash.
 ```
-python3.11 tools/oelaimporter/oelaimporter.py -u oelakoji -s openela-main -d dist-oela8 -b el8 -o bash
+python3.11 tools/oelaimporter/oelaimporter.py -u qingsongkoji -s openela-main -d dist-oela8 -b el8 -o bash
 ```
 
 We should see an output like the following.
@@ -263,7 +263,7 @@ The 'only' option also allows us to quite easily extend Oela Importer in combina
 
 ```
 TOKEN=':^)'
-CMD="python3.11 tools/oelaimporter/oelaimporter.py -t $TOKEN -u oelakoji -s openela-main -d dist-oela8 -b el8 -m"
+CMD="python3.11 tools/oelaimporter/oelaimporter.py -t $TOKEN -u qingsongkoji -s openela-main -d dist-oela8 -b el8 -m"
 
 function do_import() {
  while read -r line; do $CMD -o "$line"; done < repolist.txt

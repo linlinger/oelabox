@@ -3,8 +3,8 @@
 ipaadmin_principal: admin
 ipaclient_no_ntp: true
 ipaclient_mkhomedir: true
-ipaserver_realm: OELABOX.LOCAL
-ipareplica_domain: oelabox.local
+ipaserver_realm: QSLINUX.COM
+ipareplica_domain: qslinux.com
 ipareplica_auto_forwarders: true
 ipareplica_setup_firewalld: true
 ipareplica_setup_ca: true

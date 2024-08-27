@@ -14,5 +14,5 @@ ipa_keytabs:
     service: '{{ koji_gc_service }}'
       #- keytab:
       #  path: /etc/keytabs/host.keytab
-      #service: host/koji.oelabox.local
+      #service: host/koji.qslinux.com
 

@@ -32,7 +32,7 @@ ipagroups:
       - userman
       - hostman
       - kerbman
-      - oelakoji
+      - qingsongkoji
       - pubsub_federation
       - oelapubsub
       - oelaautomation

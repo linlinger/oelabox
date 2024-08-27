@@ -1,12 +1,12 @@
 $TTL 8h
-@ IN SOA ns1.oelabox.local. hostmaster.oelabox.local. (
+@ IN SOA ns1.qslinux.com. hostmaster.qslinux.com. (
                           1	     ; serial number
                           1d         ; refresh period
                           3h         ; retry period
                           3d         ; expire time
                           3h )       ; minimum TTL
 
-                  IN NS   ns1.oelabox.local.
+                  IN NS   ns1.qslinux.com.
 
 dns               IN A    192.168.1.21
 ns1               IN A    192.168.1.21
@@ -14,16 +14,16 @@ ns1               IN A    192.168.1.21
 ipa		  IN A	  192.168.1.22
 koji		  IN A    192.168.1.24
 
-_kerberos-master._tcp.oelabox.local. 3600 IN SRV 0 100 88 ipa.oelabox.local.
-_kerberos-master._udp.oelabox.local. 3600 IN SRV 0 100 88 ipa.oelabox.local.
-_kerberos._tcp.oelabox.local. 3600 IN SRV 0 100 88 ipa.oelabox.local.
-_kerberos._udp.oelabox.local. 3600 IN SRV 0 100 88 ipa.oelabox.local.
-_kerberos.oelabox.local. 3600 IN TXT "OELABOX.LOCAL"
-_kerberos.oelabox.local. 3600 IN URI 0 100 "krb5srv:m:tcp:ipa.oelabox.local."
-_kerberos.oelabox.local. 3600 IN URI 0 100 "krb5srv:m:udp:ipa.oelabox.local."
-_kpasswd._tcp.oelabox.local. 3600 IN SRV 0 100 464 ipa.oelabox.local.
-_kpasswd._udp.oelabox.local. 3600 IN SRV 0 100 464 ipa.oelabox.local.
-_kpasswd.oelabox.local. 3600 IN URI 0 100 "krb5srv:m:tcp:ipa.oelabox.local."
-_kpasswd.oelabox.local. 3600 IN URI 0 100 "krb5srv:m:udp:ipa.oelabox.local."
-_ldap._tcp.oelabox.local. 3600 IN SRV 0 100 389 ipa.oelabox.local.
-ipa-ca.oelabox.local. 3600 IN A 192.168.1.22
+_kerberos-master._tcp.qslinux.com. 3600 IN SRV 0 100 88 ipa.qslinux.com.
+_kerberos-master._udp.qslinux.com. 3600 IN SRV 0 100 88 ipa.qslinux.com.
+_kerberos._tcp.qslinux.com. 3600 IN SRV 0 100 88 ipa.qslinux.com.
+_kerberos._udp.qslinux.com. 3600 IN SRV 0 100 88 ipa.qslinux.com.
+_kerberos.qslinux.com. 3600 IN TXT "QSLINUX.COM"
+_kerberos.qslinux.com. 3600 IN URI 0 100 "krb5srv:m:tcp:ipa.qslinux.com."
+_kerberos.qslinux.com. 3600 IN URI 0 100 "krb5srv:m:udp:ipa.qslinux.com."
+_kpasswd._tcp.qslinux.com. 3600 IN SRV 0 100 464 ipa.qslinux.com.
+_kpasswd._udp.qslinux.com. 3600 IN SRV 0 100 464 ipa.qslinux.com.
+_kpasswd.qslinux.com. 3600 IN URI 0 100 "krb5srv:m:tcp:ipa.qslinux.com."
+_kpasswd.qslinux.com. 3600 IN URI 0 100 "krb5srv:m:udp:ipa.qslinux.com."
+_ldap._tcp.qslinux.com. 3600 IN SRV 0 100 389 ipa.qslinux.com.
+ipa-ca.qslinux.com. 3600 IN A 192.168.1.22

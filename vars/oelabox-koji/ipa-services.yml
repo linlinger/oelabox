@@ -1,8 +1,8 @@
 ---
-kojid_service: "compile/koji.oelabox.local"
-koji_web_service: "HTTP/koji.oelabox.local"
-kojira_service: "kojira/koji.oelabox.local"
-koji_gc_service: "koji-gc/koji.oelabox.local"
+kojid_service: "compile/koji.qslinux.com"
+koji_web_service: "HTTP/koji.qslinux.com"
+kojira_service: "kojira/koji.qslinux.com"
+koji_gc_service: "koji-gc/koji.qslinux.com"
 
 ipa_services:
   - "{{ kojid_service }}"

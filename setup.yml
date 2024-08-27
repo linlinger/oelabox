@@ -112,9 +112,9 @@
         content: |
           127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
           ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-          192.168.121.10 dns.oelabox.local
-          192.168.121.11 ipa.oelabox.local
-          192.168.121.12 koji.oelabox.local
+          192.168.121.10 dns.qslinux.com
+          192.168.121.11 ipa.qslinux.com
+          192.168.121.12 koji.qslinux.com
 
     - name: Install freeipa.ansible_freeipa collection
       ansible.builtin.shell: "ansible-galaxy collection install freeipa.ansible_freeipa"

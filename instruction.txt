@@ -21,7 +21,7 @@ ansible-playbook init-oelabox-ipa-team.yml -i inventory.ini -Kk -v
 ansible-playbook provision-oelabox-ipa-client.yml -i inventory.ini -Kk -v
 
 ### Next set up koji server
-### PLEASE DO REMEMBER TO check A/AAA Record at ipa.oelabox.local
+### PLEASE DO REMEMBER TO check A/AAA Record at ipa.qslinux.com
 ansible-playbook provision-oelabox-koji-builder.yml -i inventory.ini -Kk -v
 
 

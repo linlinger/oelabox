@@ -49,7 +49,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
         -   [Reset](topics/operation-StartStopDestroyandReset.md#reset)
     -   [Koji Server](topics/operation-KojiServer.md#kojiserver)
         -   [Login Through SSH](topics/operation-KojiServer.md#loginssh)
-        -   [Login To The oelakoji User With Kerberos](topics/operation-KojiServer.md#loginoelakoji)
+        -   [Login To The qingsongkoji User With Kerberos](topics/operation-KojiServer.md#loginqingsongkoji)
             -   [Test Koji Kerberos Authentication](topics/operation-KojiServer.md#testkerbauth)
         -   [About Package Building](topics/operation-KojiServer.md#aboutpkgbuilding)
             -   [Basic Information About Tags](topics/operation-KojiServer.md#basictaginfo)

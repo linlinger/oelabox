@@ -12,10 +12,10 @@
     state: started
     enabled: yes
 
-- name: "/var/named/oelabox.local.zone"
+- name: "/var/named/qslinux.com.zone"
   ansible.builtin.copy:
-    src: files/oelabox-dns/oelabox.local.zone
-    dest: /var/named/oelabox.local.zone
+    src: files/oelabox-dns/qslinux.com.zone
+    dest: /var/named/qslinux.com.zone
     owner: root
     group: named
     mode: '0640'
